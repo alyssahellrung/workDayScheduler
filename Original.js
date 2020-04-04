@@ -2,34 +2,29 @@ $(document).ready(function() {
   // Sets the date at the top of the page (in the header).
     $("#currentDay").text(moment().format("MMMM Do YYYY"));
   
-  //Creates a variable to register the current, real world time in 12-hour format
-  var currentTime = moment().format("h");
-  //Creates a variable to register the current, real world time in 24-hour format
-  var milTime = moment().format("H");
-  // console.log(currentTime);
-  // console.log(milTime);
+  //Creates a variable to register the current, real world time.
+  var currentTime = moment().format("HH");
+  console.log(currentTime);
   
-
   // Sets the attribute for the blocks according to what the current time is
-    
-  for (var hour = 9; hour <= 17; hour++) {
-  var index = hour - 9;
-  var blockTime = $("#" + index).data("military");
-  index++;
-  console.log(index);
-  console.log(blockTime);
-  console.log(milTime);
+  var index = 9;
   
-  if (blockTime === milTime) {
-    $("#" + index).css({"background-color": "#ff6961", "color": "white"});
+  for (var i = 0900; i < 1700; i = i+100) {
+  var blockTime = $("#" + index).data("military");
+  console.log(blockTime);
+  console.log(currentTime);
+  
+  if (blockTime === currentTime) {
+    $("#" + index).attr("class", "present");
   } 
-  else if (blockTime < milTime) {
-    $("#" + index).css({"background-color": "#d3d3d3", "color": "white"});
+  else if (blockTime < currentTime) {
+    $("#" + index).attr("class", "past");
   }
-  else if (blockTime > milTime) {
-    $("#" + index).css({"background-color": "#77dd77", "color": "white"});
+  else if (blockTime > currentTime) {
+    $("#" + index).attr("class", "future");
   }
   }
+  
   
   //Sets a variable that allows us to get previously submitted items out of local storage for each time block
     var nineAM = localStorage.getItem("9");
@@ -59,7 +54,8 @@ $(document).ready(function() {
     var fivePM = localStorage.getItem("5");
     $("#5").val(fivePM);
   
-        
+    
+    
   //When the submit button for any time block is clicked, the value of that time block (the message that has been written there) is set in local storage.
     $(".btn").on("click", function() {
       var messageId = $(this).data("time");
