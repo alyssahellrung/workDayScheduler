@@ -10,7 +10,7 @@ LINK TO DEPLOYED WEBPAGE
 [Click here](https://alyssahellrung.github.io/workDayScheduler/)
 
 SCREEN SHOT
-![image](images/image.png)
+![image]https://user-images.githubusercontent.com/57811605/78464019-2a4d3c00-7699-11ea-8eb7-d4f46141867f.png
 
 ASSESSMENT
 Building out the HTML and general styling of this page was very simple, as was assigning button handlers and setting up local storage. It was much more challenging to figure out how to get the colors to appear correctly due to issues presented by using a 12-hour model versus a 24-hour/military model of time.
